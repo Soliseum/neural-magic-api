@@ -8,13 +8,13 @@ const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
 const image = require('./controllers/image');
 
+// process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
+
 const db = knex({
 	client     : 'pg',
 	connection : {
-		host     : '127.0.0.1', //localhost
-		user     : 'postgres', //add your user name for the database here
-		password : 'postgres', //add your correct password here
-		database : 'neural-magic', //add your database name here
+		host : process.env.DATABASE_URL, //localhost
+		ssl  : true,
 	},
 });
 
